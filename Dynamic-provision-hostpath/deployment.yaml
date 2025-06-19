@@ -14,7 +14,7 @@ spec:
       volumes:
         - name: webdata
           persistentVolumeClaim: 
-            claimName: learning-pvc
+            claimName: learning-rancher
       containers:
       - name: learning-rancher
         image: nginx:latest
