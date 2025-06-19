@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-rancher
+spec:
+  selector:
+    matchLabels:
+      app: learning-rancher
+  template:
+    metadata:
+      labels:
+        app: learning-rancher
+    spec:
+      volumes:
+        - name: webdata
+          persistentVolumeClaim: 
+            claimName: learning-pvc
+      containers:
+      - name: learning-rancher
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: webdata
+          mountPath: /usr/share/nginx/html
